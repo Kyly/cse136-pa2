@@ -505,3 +505,22 @@ li input:checked + ol
 }
 li input:checked + ol > li { display: block; margin: 0 0 0.125em;  /* 2px */}
 li input:checked + ol > li:last-child { margin: 0 0 0.063em; /* 1px */ }
+
+
+
+/*** custom checkboxes ***/
+li label.star
+{
+    background: 1px;
+}
+input[type=checkbox] { display:none; } /* to hide the checkbox itself */
+input[type=checkbox] + label:before {
+    font-family: FontAwesome;
+    display: inline-block;
+}
+
+input[type=checkbox] + label:before { content: "\f005"; } /* unchecked icon */
+input[type=checkbox] + label:before { letter-spacing: 20px;float:right; } /* space between checkbox and label */
+
+input[type=checkbox]:checked + label:before { content: "\f006"; } /* checked icon */
+input[type=checkbox]:checked + label:before { letter-spacing: 20px;float:right; } /* allow space for check mark */

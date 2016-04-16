@@ -58,7 +58,12 @@
                 parent: 'root',
                 name: 'school',
                 url: '',
-                children: []
+                children: [ {
+                        parent: 'root',
+                        name: 'gmail',
+                        url: 'gmail.com',
+                        children: []
+                            }]
             }]
         }
 
