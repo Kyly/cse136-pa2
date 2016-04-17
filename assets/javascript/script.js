@@ -47,16 +47,19 @@
             children: [{
                 parent: 'root',
                 name: 'gmail',
+                id: '1',
                 url: 'gmail.com',
                 children: []
             }, {
                 parent: 'root',
                 name: 'github',
                 url: 'github.com',
+                id: '2',
                 children: []
             }, {
                 parent: 'root',
                 name: 'school',
+                id: '3',
                 url: '',
                 children: [ {
                         parent: 'root',
