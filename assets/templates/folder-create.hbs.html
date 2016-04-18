@@ -1,0 +1,23 @@
+<folder-create-dialog class="dialog">
+  <bm-dialog-close><span onclick="App.folderCreate.remove()" class="fa fa-times"></span></bm-dialog-close>
+  <bm-dialog-body class="drag-and-drop-container">
+    <!---->
+    <form>
+      <div class="row">
+        <h3> Create Folder</h3>
+      </div>
+      <div class="row form_row">
+      <!--  <div class="col-lg-5 col-md-5" id="titleCol"> -->
+          <p id="title">Title</p>
+          <input type = "text" name = "title"><br>
+        <!--</div>-->
+      </div>
+      <div class="row form_row" id = "contents-row">
+        <p id="contents">Contents</p>
+        <input type = "text" name = "contents"><br>
+      </div>
+
+      <input class="row" type = "submit">
+    </form>
+  </bm-dialog-body>
+</folder-create-dialog>
