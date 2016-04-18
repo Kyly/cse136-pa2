@@ -20,7 +20,7 @@
 
 html, body {
     font-size: 10px;
-    font-family: "Titillium Web"
+    font-family: "Titillium Web";
 }
 
 a {
@@ -580,6 +580,78 @@ bm-upload-file-dialog .drag-and-drop-container {
 ::-webkit-input-placeholder { font-size: larger; }
 :-moz-placeholder { font-size: larger; }
 :-ms-input-placeholder { font-size: larger; }
+
+bm-edit-dialog form, bm-create-dialog form {
+    width: 100%;
+}
+
+bm-edit-dialog form, bm-create-dialog form {
+    text-align: center;
+}
+
+bm-edit-dialog form input, bm-create-dialog form input {
+    border: 0.1em solid #ccc;
+    border-radius: 0.5em;
+    padding: 1%;
+    line-height: 1.5em;
+    letter-spacing: .01em;
+    background-color:  rgba(57, 120, 159, 100);
+    width: 100%;
+}
+
+textarea {
+    border: 0.1em solid #ccc;
+    border-radius: 0.5em;
+    background-color: rgba(57, 120, 159, 100);
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: .9em;
+
+}
+
+bm-edit-dialog form input[type="submit"], bm-create-dialog form input[type="submit"] {
+    margin-top: 4em;
+    margin-left: 3em;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    black;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:     black;
+    opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    black;
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: black;
+}
+
+
+@media screen and (max-width: 48em) {
+    bm-edit-dialog form input, bm-create-dialog form input {
+        margin-left: 3em;
+        margin-top: 0em;
+    }
+
+    bm-edit-dialog form input[type="submit"], bm-create-dialog form input[type="submit"] {
+        margin-top: 0em;
+    }
+
+    textarea {
+        margin-left: 2.3em;
+    }
+
+    bm-edit-dialog form p, bm-create-dialog form p {
+        margin-left: 1em;
+        margin-top: 1em;
+    }
+}
 
 /* Bookmark Explorer */
 
