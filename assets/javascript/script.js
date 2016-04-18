@@ -37,6 +37,7 @@
     App.bookMarkUploader = new BookmarkUploader();
     App.bookMarkCreate   = new BookmarkCreate();
     App.bookMarkEdit     = new BookmarkEdit();
+    App.folderCreate     = new FolderCreate();
 
     /* Mock Bookmark Service*/
     function getBookmarks() {
@@ -135,16 +136,16 @@
         var bookmarks = getBookmarks();
 
         document.getElementById('bookmark-list').innerHTML = "";
-        
+
         if (reference == 'top') {
             current = bookmarks.children;
         }
         else {
-            
+
             current = bookmarks.children[5].children;
             printBookmarkListItem(bookExp.container, bookExp.subFolderBack, {});
         }
-        
+
         current.forEach(function (current) {
             if (current.url) {
                 printBookmarkListItem(bookExp.container, bookExp.itemTemplate, current);
@@ -162,7 +163,7 @@
         }
         else {
             ele.classList.toggle("fa-star");
-            ele.classList.add("fa-star-o")   
+            ele.classList.add("fa-star-o")
         }
     };
 
@@ -222,6 +223,19 @@
 
     BookmarkEdit.prototype.remove = function hideBookmarkEdit() {
         hide('bm-edit-dialog');
+    };
+
+    /* Folder create */
+    function FolderCreate() {
+        this.template  = App.templates['assets/templates/folder-create.hbs.html'];
+    }
+
+    FolderCreate.prototype.show = function showFolderCreate() {
+        show('folder-create-dialog', this.template);
+    };
+
+    FolderCreate.prototype.remove = function hideFolderCreate() {
+        hide('folder-create-dialog');
     };
 
     /* Show hide functionality */
