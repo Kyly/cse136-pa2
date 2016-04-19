@@ -18,23 +18,22 @@
         cse 136 with Professor Thomas Powell</span></h4>
 </header>
 
-<bm-app id="app-content" class="container" style="height: 64em;">
+<bm-app id="app-content" class="container">
     <div class="row">
         <div class="col-md-4">
             <div id="bookmark-explorer">
                 <div id="bookmark-actions">
                     <div class="action-button-group">
-                        <a class="box" href="javascript: void(0);" onclick="App.bookmarkCreate.show()">
+                        <a class="box" href="javascript: void(0);" onclick="show('bm-create-dialog')">
                             <span class="fa fa-plus-square-o"></span>
                         </a>
-                        <a class="box" href="javascript: void(0);" onclick="App.createFolder.show()">
+                        <a class="box" href="javascript: void(0);" onclick="show('bm-create-folder-dialog')">
                             <span class="fa fa-folder-o"></span>
                         </a>
-                        <a class="box" href="javascript: void(0);" onclick="App.bookmarkUploader.show()">
+                        <a class="box" href="javascript: void(0);" onclick="show('bm-upload-file-dialog')">
                             <span class="fa fa-cloud-upload"></span>
                         </a>
-                        <a class="box" href="bookmark-export.csv" download>
-
+                        <a class="box" href="bookmark-export.csv" download="">
                             <span class="fa fa-cloud-download"></span>
                         </a>
                     </div>
@@ -64,24 +63,320 @@
                 <hr>
                 <div>
                     <ul id="bookmark-list">
-
+                        <li class="list-item-style">
+                            <div class="bookmark-item split-list">
+                                <div>
+                                    <a class="bookmark-link"
+                                       href="http://www.fromdev.com/2014/03/python-tutorials-resources.html"
+                                       target="_blank">
+                                        <span class="fa fa-bookmark bookmark-icons hand"></span> Python Tutorial
+                                    </a>
+                                </div>
+                                <div>
+                                    <span class="fa fa-star edit-favorite-icons hand"
+                                          onclick="toggleFavorite(this)"></span>
+                                    <span class="fa fa-edit edit-favorite-icons hand"
+                                          onclick="show('bm-edit-dialog')"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item-style">
+                            <div class="bookmark-item split-list">
+                                <div>
+                                    <a class="bookmark-link" href="hhttp://www.hightimes.com/" target="_blank">
+                                        <span class="fa fa-bookmark bookmark-icons hand"></span> Hightimes
+                                    </a>
+                                </div>
+                                <div>
+                                    <span class="fa fa-star edit-favorite-icons hand"
+                                          onclick="toggleFavorite(this)"></span>
+                                    <span class="fa fa-edit edit-favorite-icons hand"
+                                          onclick="show('bm-edit-dialog')"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item-style">
+                            <div class="bookmark-item split-list">
+                                <div>
+                                    <a class="bookmark-link" href="sdklnjln" target="_blank">
+                                        <span class="fa fa-bookmark bookmark-icons hand"></span> School
+                                    </a>
+                                </div>
+                                <div>
+                                    <span class="fa fa-star edit-favorite-icons hand"
+                                          onclick="toggleFavorite(this)"></span>
+                                    <span class="fa fa-edit edit-favorite-icons hand"
+                                          onclick="show('bm-edit-dialog')"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item-style">
+                            <div class="bookmark-item split-list">
+                                <div>
+                                    <a class="bookmark-link" href="https://nodejs.org/en/" target="_blank">
+                                        <span class="fa fa-bookmark bookmark-icons hand"></span> Node JS
+                                    </a>
+                                </div>
+                                <div>
+                                    <span class="fa fa-star edit-favorite-icons hand"
+                                          onclick="toggleFavorite(this)"></span>
+                                    <span class="fa fa-edit edit-favorite-icons hand"
+                                          onclick="show('bm-edit-dialog')"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item-style">
+                            <div class="bookmark-item split-list">
+                                <div>
+                                    <a class="bookmark-link" href="https://nodejs.org/en/" target="_blank">
+                                        <span class="fa fa-bookmark bookmark-icons hand"></span> Some other page
+                                    </a>
+                                </div>
+                                <div>
+                                    <span class="fa fa-star edit-favorite-icons hand"
+                                          onclick="toggleFavorite(this)"></span>
+                                    <span class="fa fa-edit edit-favorite-icons hand"
+                                          onclick="show('bm-edit-dialog')"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item-style">
+                            <div class="bookmark-item split-list">
+                                <div>
+                                    <a class="bookmark-link folder-text">
+                                        <span class="fa fa-folder left-item bookmark-icons hand"></span> Exciting Stuff
+                                    </a>
+                                </div>
+                                <div>
+                                    <span class="fa fa-chevron-right edit-favorite-icons hand"></span>
+                                    <span class="fa fa-edit edit-favorite-icons hand"
+                                          onclick="show('bm-edit-dialog')"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item-style">
+                            <div class="bookmark-item split-list">
+                                <div>
+                                    <a class="bookmark-link" href="https://nodejs.org/en/" target="_blank">
+                                        <span class="fa fa-bookmark bookmark-icons hand"></span> XXX
+                                    </a>
+                                </div>
+                                <div>
+                                    <span class="fa fa-star edit-favorite-icons hand"
+                                          onclick="toggleFavorite(this)"></span>
+                                    <span class="fa fa-edit edit-favorite-icons hand"
+                                          onclick="show('bm-edit-dialog')"></span>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
-
-
         </div>
         <div id="bookmark-dialog" class="col-md-8">
-            <!-- Your dialogs will get appended here -->
-        </div>
+            <bm-edit-dialog class="dialog">
+                <div class="dialog-header">
+                    <div class="dialog-title">Edit</div>
+                    <bm-dialog-close><span onclick="hide('bm-edit-dialog')" class="fa fa-times"></span>
+                    </bm-dialog-close>
+                </div>
+                <bm-dialog-body>
+                    <form class="dialog-form">
+                        <div class="row">
+                            <div class="name col-xs-6">
+                                <input name="name" type="text" class="dialog-input name" placeholder="Name">
+                            </div>
+                            <div class="keywords col-xs-6">
+                                <input name="keywords" type="text" class="dialog-input keywords" placeholder="Keywords">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input name="url" type="text" class="dialog-input url" placeholder="Url">
+                        </div>
 
+                        <div class="row text">
+                            <textarea name="text" class="dialog-input description" placeholder="Description"></textarea>
+                        </div>
+                        <div class="row">
+                            <select class="dialog-select dialog-input">
+                                <option value="" disabled="" selected="">Select folder</option>
+                                <option>Folder 1</option>
+                                <option>Folder 1</option>
+                                <option>Porn</option>
+                                <option>NSFL</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="press">
+                                <button onclick="hide('bm-edit-dialog', event); return false;">delete</button>
+                                <button onclick="hide('bm-edit-dialog', event); return false;">apply</button>
+                            </div>
+                        </div>
+                    </form>
+                </bm-dialog-body>
+            </bm-edit-dialog>
+            <bm-upload-file-dialog class="dialog">
+                <div class="dialog-header">
+                    <div class="dialog-title">Upload</div>
+                    <bm-dialog-close><span onclick="hide('bm-upload-file-dialog')" class="fa fa-times"></span>
+                    </bm-dialog-close>
+                </div>
+                <bm-dialog-body class="drag-and-drop-container">
+                    <div class="drag-and-drop-inner">
+                        <div class="text-center">
+                            <span class="fa fa-cloud-upload"></span>
+                            <p>drag and drop bookmark file here</p>
+                            <a href="javascript: void(0);">Open file explorer</a>
+                        </div>
+                    </div>
+                </bm-dialog-body>
+            </bm-upload-file-dialog>
+            <bm-create-folder-dialog class="dialog">
+                <div class="dialog-header">
+                    <div class="dialog-title">Create Folder</div>
+                    <bm-dialog-close><span onclick="hide('bm-create-folder-dialog')" class="fa fa-times"></span>
+                    </bm-dialog-close>
+                </div>
+                <bm-dialog-body>
+                    <form class="dialog-form">
+                        <div class="row">
+                            <input name="name" type="text" class="name dialog-input" placeholder="Folder name">
+                        </div>
+                        <div class="row text">
+                            <textarea name="text" class="description dialog-input" placeholder="Description"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="press">
+                                <button onclick="hide('bm-create-folder-dialog'); return false;">Create</button>
+                            </div>
+                        </div>
+                    </form>
+                </bm-dialog-body>
+            </bm-create-folder-dialog>
+            <bm-create-dialog class="dialog">
+                <div class="dialog-header">
+                    <div class="dialog-title">Create</div>
+                    <bm-dialog-close><span onclick="hide('bm-create-dialog')" class="fa fa-times"></span>
+                    </bm-dialog-close>
+                </div>
+                <bm-dialog-body>
+                    <form class="dialog-form">
+                        <div class="row">
+                            <div class="name col-xs-6">
+                                <input name="name" type="text" class="name dialog-input" placeholder="Name">
+                            </div>
+                            <div class="keywords col-xs-6">
+                                <input name="keywords" type="text" class="keywords dialog-input" placeholder="Keywords">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input name="url" type="text" class="url dialog-input" placeholder="Url">
+                        </div>
+
+                        <div class="row text">
+                            <textarea name="text" class="description dialog-input" id="description"
+                                      placeholder="Description"></textarea>
+                        </div>
+                        <div class="row">
+                            <select class="dialog-select dialog-input">
+                                <option value="" disabled="" selected="">Select folder</option>
+                                <option>Folder 1</option>
+                                <option>Folder 1</option>
+                                <option>Porn</option>
+                                <option>NSFL</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="press">
+                                <button onclick="hide('bm-create-dialog', event); return false;">Create</button>
+                            </div>
+                        </div>
+                    </form>
+                </bm-dialog-body>
+            </bm-create-dialog>
+        </div>
     </div>
 </bm-app>
 
+<!-- Show hide code for dialogs -->
+<script>
+    var dialogContainer = document.getElementById('bookmark-dialog');
 
-<script src="assets/lib/handlebars/handlebars.min.js"></script>
-<script src="assets/javascript/templates.js"></script>
-<script src="assets/javascript/script.js"></script>
-<script>window.onload = App.bookmarkExplorer.showBookmarks('top');</script>
+    function toggleFavorite(ele) {
+        if (ele.classList.contains("fa-star-o"))
+        {
+            ele.classList.toggle("fa-star-o");
+            ele.classList.add("fa-star")
+        }
+        else
+        {
+            ele.classList.toggle("fa-star");
+            ele.classList.add("fa-star-o")
+        }
+    }
+
+    /* Show hide functionality */
+    function hide(tag, event) {
+        if (event)
+        {
+            event.preventDefault();
+        }
+
+        var elements = document.getElementsByTagName(tag);
+        /* Check if element is present */
+        if (elements.length !== 0)
+        {
+            var element           = elements[0];
+            element.style.display = 'none';
+        }
+    }
+
+    function show(tag) {
+
+        var elements = document.getElementsByTagName(tag);
+        var element  = elements[0];
+        /* Check if element is shown */
+        if (getDisplay(element) === 'none')
+        {
+            displayAsFirstChild(element);
+        }
+    }
+
+    function displayAsFirstChild(element) {
+        var firstChild = dialogContainer.firstChild;
+
+        /* Shows element as the first child */
+        dialogContainer.insertBefore(element, firstChild);
+        element.style.display = 'flex';
+    }
+
+    function getDisplay(element) {
+        return element.currentStyle ? element.currentStyle.display :
+               getComputedStyle(element, null).display;
+    }
+</script>
+
+<!-- Shims for registerElements -->
+<script src="assets/lib/document-register-element/build/document-register-element.js"></script>
+
+<!-- Register elements -->
+<script>
+    (function () {
+        var bmApp = document.registerElement('bm-app');
+        document.body.appendChild(new bmApp());
+        var bmUploadFileDialog = document.registerElement('bm-upload-file-dialog');
+        document.body.appendChild(new bmUploadFileDialog());
+        var bmDialogClose = document.registerElement('bm-dialog-close');
+        document.body.appendChild(new bmDialogClose());
+        var bmDialogBody = document.registerElement('bm-dialog-body');
+        document.body.appendChild(new bmDialogBody());
+        var bmCreateDialog = document.registerElement('bm-create-dialog');
+        document.body.appendChild(new bmCreateDialog());
+        var bmEditDialog = document.registerElement('bm-edit-dialog');
+        document.body.appendChild(new bmEditDialog());
+        var bmCreateFolderDialog = document.registerElement('bm-create-folder-dialog');
+        document.body.appendChild(new bmCreateFolderDialog());
+    })(window);
+</script>
 </body>
 </html>
